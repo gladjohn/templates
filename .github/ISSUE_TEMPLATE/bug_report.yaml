@@ -1,13 +1,13 @@
-name: Bug Report
+name: Bug report
 description: Broken or unintended behavior with one of our libraries.
 title: '[Bug] '
-labels: [bug-unconfirmed, question]
+labels: ["untriaged", "needs attention"]
 body:
 - type: markdown
   attributes:
     value: |
       ## Before submitting your issue
-      Please make sure that your question or issue is not already covered in [MSAL docs](https://learn.microsoft.com/entra/msal/dotnet/) or [samples](https://learn.microsoft.com/azure/active-directory/develop/sample-v2-code?tabs=apptype).
+      Please make sure that your question or issue is not already covered in existing issues, [MSAL docs](https://learn.microsoft.com/en-us/entra/msal/dotnet/), or [samples](https://learn.microsoft.com/en-us/azure/active-directory/develop/sample-v2-code?tabs=apptype).
 
       **Logs and network traces**
       Without logs or traces, it is unlikely that the team can investigate your issue. Capturing logs and network traces is described in our [Docs](https://learn.microsoft.com/azure/active-directory/develop/msal-logging-dotnet).
@@ -20,8 +20,7 @@ body:
 - type: input
   attributes:
     label: Library version used
-    description: "Please enter the version of the library where you ran into the issue."
-    placeholder: "4.54.0"
+    description: "Please enter the version of the library where you ran into the issue (e.g. 4.54.0)."
   validations:
     required: true
     
@@ -34,13 +33,13 @@ body:
 
 - type: dropdown
   attributes:
-    label: Public, confidential, or Managed Identity client?
+    label: MSAL client type
     description: "Are you using PublicClientApplication,  ConfidentialClientApplication or ManagedIdentityApplication?"
     multiple: true
     options: 
       - "Public"
       - "Confidential"
-      - "Managed Identity"
+      - "Managed identity"
   validations:
     required: true
 
@@ -56,8 +55,8 @@ body:
       - "Web API"
       - "Daemon app" 
   validations:
-    required: true   
-
+    required: true
+    
 - type: dropdown
   attributes:
     label: Authentication flow type
@@ -72,51 +71,43 @@ body:
       - "Authorization code"
       - "On-Behalf-Of"
       - "Client credentials (service-to-service calls)"
-      - "Long-running On Behalf Of (OBO)"
+      - "Long-running On-Behalf-Of (OBO)"
       - "Managed Identity"
       - "Other"
   validations:
-    required: true    
-
+    required: true
+    
 - type: dropdown
   attributes:
-    label: Is this a new or existing app?
+    label: Is this a new or an existing app?
     description: "Is this a new or existing app?"
-    multiple: true
+    multiple: false
     options: 
       - "The app is in production, and I have upgraded to a new version of MSAL"
       - "The app is in production, I haven't upgraded MSAL, but started seeing this issue"
       - "This is a new app or experiment"
   validations:
-    required: true        
-
-- type: textarea
-  attributes:
-    label: Issue description and reproduction steps
-    description: "Briefly explain the issue you are seeing. Please also provide steps to reproduce or a link to a sample which demonstrates the behavior."
+    required: true
     
 - type: textarea
   attributes:
-    label: Error message
-    description: "Please provide any error messages you are receiving along with a stack trace, if possible."
-
-- type: textarea
-  attributes:
-    label: MSAL-specific logs
-    description: "Please provide verbose level log messages from MSAL. [Learn more](https://learn.microsoft.com/azure/active-directory/develop/msal-logging-dotnet)"
-       
+    label: Issue description and reproduction steps
+    description: "Briefly explain the issue you are seeing along with any error messages or stack trace. Provide a link to one of the [standard samples](https://learn.microsoft.com/azure/active-directory/develop/sample-v2-code?tabs=apptype) and steps to reproduce the behavior. Make sure to provide verbose level log messages from MSAL, if available. [Learn more](https://learn.microsoft.com/azure/active-directory/develop/msal-logging-dotnet)"
+  validations:
+    required: true
+    
 - type: textarea
   attributes:
     label: Relevant code snippets
-    description: "Please provide relevant code snippets that can be used to reproduce the issue."
-    render: javascript
+    description: "Provide relevant code snippets that can be used to reproduce the issue."
+    render: csharp
   validations:
     required: false
        
 - type: textarea
   attributes:
     label: Expected behavior
-    description: "Please describe what you expect the behavior to be."
+    description: "Describe what you expect the behavior to be."
   validations:
     required: true
     
@@ -124,7 +115,7 @@ body:
   attributes:
     label: Identity provider
     options: 
-      - Microsoft Entra ID and/or MSA
+      - Microsoft Entra ID (Work and School accounts and Personal Microsoft accounts)
       - Azure B2C Basic Policy
       - Azure B2C Custom Policy
       - Azure Active Directory Federation Services (ADFS)
@@ -136,7 +127,7 @@ body:
 - type: input
   attributes:
     label: Regression
-    description: "If this behavior worked before, please enter the last working version(s) of MSAL."
+    description: "If this behavior worked before, enter the last working version(s) of MSAL."
     placeholder: "MSAL version: "
 
 - type: textarea
@@ -145,18 +136,7 @@ body:
     description: "Possible solution or workarounds, if you know of any."
   validations:
     required: false
-    
-- type: dropdown
-  attributes:
-    label: Source
-    description: "Are you an internal or external customer?"
-    options: 
-      - External (outside Microsoft)
-      - Internal (Microsoft)
-      
-  validations: 
-     required: false
-    
+        
 - type: markdown
   attributes:
     value: "## Security Reporting"
