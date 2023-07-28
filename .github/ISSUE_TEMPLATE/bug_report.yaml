@@ -2,7 +2,7 @@ name: Bug report
 description: Broken or unintended behavior with one of our libraries.
 title: '[Bug] '
 labels: ["untriaged", "needs attention"]
-projects: "projects/1"
+projects: "https://github.com/users/gladjohn/projects/1"
 body:
 - type: markdown
   attributes:
